@@ -13,6 +13,7 @@ You will need:
 1. git clone https://github.com/Zero2k/bth_ramverk2_project_backend backend
 2. cd backend
 3. yarn - install dependencies
+## Development
 4. yarn start - start the backend
 ```
 
