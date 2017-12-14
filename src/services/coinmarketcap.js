@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export const getCoinByName = async name => {
+const URL = 'https://api.coinmarketcap.com/v1/ticker';
+
+export const getCoinByName = async (name) => {
   try {
-    const response = await axios.get(`https://api.coinmarketcap.com/v1/ticker/${name}/`);
+    const response = await axios.get(`${URL}/${name}/`);
 
     const { data } = response;
     const newData = {
@@ -36,12 +38,12 @@ export const getCoinByName = async name => {
   }
 };
 
-export const getTopTenCoins = async limit => {
+export const getTopTenCoins = async (limit) => {
   try {
-    const response = await axios.get(`https://api.coinmarketcap.com/v1/ticker/?limit=${limit}`);
+    const response = await axios.get(`${URL}/?limit=${limit}`);
 
     const { data } = response;
-    const newData = data.map(i => {
+    const newData = data.map((i) => {
       return {
         id: i.id,
         name: i.name,

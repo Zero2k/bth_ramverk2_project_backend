@@ -40,7 +40,7 @@ app.use(
   })),
 );
 
-app.listen(constants.PORT, err => {
+app.listen(constants.PORT, (err) => {
   if (err) {
     console.error(err);
   }

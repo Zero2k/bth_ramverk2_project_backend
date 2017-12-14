@@ -9,6 +9,10 @@ export default `
     data: [Coin!]
   }
 
+  type CoinImage {
+    image_url: String
+  }
+
   type Coin {
     id: String
     name: String
@@ -23,6 +27,7 @@ export default `
     percent_change_24h: Int
     percent_change_7d: Int
     last_updated: String
+    image: CoinImage
   }
 
   type Query {
