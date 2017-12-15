@@ -10,6 +10,7 @@ export default `
   }
 
   type CoinImage {
+    success: Boolean!
     image_url: String
   }
 
