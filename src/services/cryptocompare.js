@@ -1,4 +1,3 @@
-/* eslint no-param-reassign: 0 */
 import axios from 'axios';
 
 const URL = 'https://www.cryptocompare.com';

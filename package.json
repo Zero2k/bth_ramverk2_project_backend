@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "start:production": "",
+    "start:production": "NODE_ENV=production pm2 start node dist/index.js",
     "build": "babel src -d dist",
     "serve": "node dist/index.js",
     "test": "jest",
