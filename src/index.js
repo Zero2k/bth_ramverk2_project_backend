@@ -6,7 +6,9 @@ import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
 
 import path from 'path';
 import cors from 'cors';
+import './config/db';
 import constants from './config/constants';
+import { authenticateUser } from './services/auth';
 
 const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './graphql/schema')));
 const resolvers = mergeResolvers(fileLoader(path.join(__dirname, './graphql/resolvers')));
@@ -19,12 +21,13 @@ const schema = makeExecutableSchema({
 const app = express();
 app.use(cors('*'));
 
-if (process.env.NODE_ENV === 'production') {
+/* if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../../frontend/build')));
   app.use('*', express.static(path.join(__dirname, '../../frontend/build')));
-}
+} */
 
 app.use(bodyParser.json());
+app.use(authenticateUser);
 app.use(
   '/graphiql',
   graphiqlExpress({
@@ -36,7 +39,9 @@ app.use(
   constants.GRAPHQL_PATH,
   graphqlExpress(req => ({
     schema,
-    context: {},
+    context: {
+      user: req.user,
+    },
   })),
 );
 

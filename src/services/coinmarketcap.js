@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const URL = 'https://api.coinmarketcap.com/v1/ticker';
 
+/**
+ *
+ * @param {string} name Name of cryptocurrency
+ */
 export const getCoinByName = async (name) => {
   try {
     const response = await axios.get(`${URL}/${name}/`);
@@ -38,6 +42,11 @@ export const getCoinByName = async (name) => {
   }
 };
 
+/**
+ * Return top ten cryptocurrencies from coinmarketcap.com
+ *
+ * @param {string} limit Limit the number of cryptocurrencies being returned
+ */
 export const getTopTenCoins = async (limit) => {
   try {
     const response = await axios.get(`${URL}/?limit=${limit}`);

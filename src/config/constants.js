@@ -1,6 +1,6 @@
 export default {
   PORT: process.env.PORT || process.env.DBWEBB_PORT || 8080,
-  DB_URL: process.env.DB_URL || '',
+  DB_URL: process.env.DB_URL || 'mongodb://localhost/coinapp',
   GRAPHQL_PATH: '/graphql',
   JWT_SECRET_ONE:
     process.env.JWT_SECRET_ONE ||

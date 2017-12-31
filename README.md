@@ -21,6 +21,9 @@ You will need:
 3. yarn - install dependencies
 ## Development
 4. yarn start - start the backend
+## Production
+1. yarn build
+2. yarn start:production or yarn serve (start:production requires pm2)
 ```
 
 ## Further documentation

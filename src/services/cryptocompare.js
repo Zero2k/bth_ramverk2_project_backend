@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const URL = 'https://www.cryptocompare.com';
 
+/**
+ *
+ * @param {string} symbol Symbol (BTC) for cryptocurrency
+ */
 export const getCoinImage = async (symbol) => {
   try {
     let symbolValue = symbol;
@@ -17,10 +21,10 @@ export const getCoinImage = async (symbol) => {
     const { Data } = response.data;
 
     /* Fix problem with different symbols between coinmarketcap.com and cryptocompare.com */
-    symbolValue = (symbolValue === 'MIOTA' ? 'IOT' : symbolValue);
-    symbolValue = (symbolValue === 'HSR' ? 'BCH' : symbolValue);
-    symbolValue = (symbolValue === 'VERI' ? 'VRM' : symbolValue);
-    symbolValue = (symbolValue === 'BCC' ? 'BCCOIN' : symbolValue);
+    symbolValue = symbolValue === 'MIOTA' ? 'IOT' : symbolValue;
+    symbolValue = symbolValue === 'HSR' ? 'BCH' : symbolValue;
+    symbolValue = symbolValue === 'VERI' ? 'VRM' : symbolValue;
+    symbolValue = symbolValue === 'BCC' ? 'BCCOIN' : symbolValue;
 
     const imageUrl = Data[symbolValue].ImageUrl;
 
