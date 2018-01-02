@@ -2,7 +2,8 @@ export default `
   scalar Date
 
   type Auth {
-    token: String!
+    success: Boolean!,
+    token: String
   }
 
   type Del {

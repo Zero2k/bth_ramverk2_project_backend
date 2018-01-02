@@ -23,10 +23,14 @@ export default {
         const user = await User.create(userCredentials);
 
         return {
+          success: true,
           token: user.createToken(),
         };
       } catch (err) {
-        throw err;
+        /* throw err; */
+        return {
+          success: false,
+        };
       }
     },
     login: async (parent, { email, password }) => {
@@ -42,10 +46,14 @@ export default {
         }
 
         return {
+          success: true,
           token: user.createToken(),
         };
       } catch (err) {
-        throw err;
+        /* throw err; */
+        return {
+          success: false,
+        };
       }
     },
     /* REMOVE THIS IN PRODUCTION */
