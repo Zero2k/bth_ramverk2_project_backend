@@ -5,6 +5,14 @@ export default {
   User: {},
 
   Query: {
+    allUsers: async (parent, args, { user }) => {
+      try {
+        await requireAuth(user);
+        return User.find({}).sort({ createdAt: -1 });
+      } catch (err) {
+        throw err;
+      }
+    },
     me: async (parent, args, { user }) => {
       try {
         const me = await requireAuth(user);

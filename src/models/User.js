@@ -40,9 +40,10 @@ UserSchema.methods = {
     return jwt.sign(
       {
         _id: this._id,
+        username: this.username,
       },
       constants.JWT_SECRET_ONE,
-      { expiresIn: '120days' },
+      { expiresIn: '2m' },
     );
   },
 };

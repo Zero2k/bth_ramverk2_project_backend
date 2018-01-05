@@ -20,9 +20,10 @@ const schema = makeExecutableSchema({
 
 const app = express();
 app.use(cors('*'));
+app.use(authenticateUser);
 
 app.use(bodyParser.json());
-app.use(authenticateUser);
+
 app.use(
   '/graphiql',
   graphiqlExpress({

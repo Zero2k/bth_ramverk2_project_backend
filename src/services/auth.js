@@ -4,21 +4,6 @@ import constants from '../config/constants';
 import User from '../models/User';
 
 /**
- * Decode the token to check if it's valid
- *
- * @param {string} token JSON Web Token
- */
-export const decodeToken = (token) => {
-  const arr = token.split(' ');
-
-  if (arr[0] === 'Bearer') {
-    return jwt.verify(arr[1], constants.JWT_SECRET_ONE);
-  }
-
-  throw new Error('Token is not valid!');
-};
-
-/**
  * Authnticate the user by checking if token is valid
  *
  * @param {*} req
@@ -26,18 +11,16 @@ export const decodeToken = (token) => {
  * @param {*} next
  */
 export const authenticateUser = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
-    if (token != null) {
-      const user = await decodeToken(token);
+  const token = req.headers['x-token'];
+  if (token) {
+    try {
+      const user = jwt.verify(token, constants.JWT_SECRET_ONE);
       req.user = user;
-    } else {
+    } catch (err) {
       req.user = null;
     }
-    return next();
-  } catch (error) {
-    throw error;
   }
+  next();
 };
 
 /**
