@@ -43,7 +43,7 @@ UserSchema.methods = {
         username: this.username,
       },
       constants.JWT_SECRET_ONE,
-      { expiresIn: '2m' },
+      { expiresIn: '20m' },
     );
   },
 };

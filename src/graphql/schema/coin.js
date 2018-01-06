@@ -19,14 +19,14 @@ export default `
     name: String
     symbol: String
     rank: String
-    price_usd: Int
-    price_btc: Int
+    price_usd: String
+    price_btc: String
     market_cap_usd: Int
     total_supply: Int
     max_supply: Int
-    percent_change_1h: Int
-    percent_change_24h: Int
-    percent_change_7d: Int
+    percent_change_1h: String
+    percent_change_24h: String
+    percent_change_7d: String
     last_updated: String
     image: CoinImage
   }
