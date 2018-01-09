@@ -10,7 +10,7 @@
     "serve": "node dist/index.js",
     "test": "jest",
     "lint": "eslint src",
-    "prettier": "prettier --single-quote --print-width 100 --trailing-comma all --write 'src/**/*.js'"
+    "prettier": "prettier --single-quote --print-width 100 --trailing-comma all arrowParens always --write 'src/**/*.js'"
   },
   "keywords": [],
   "author": "",

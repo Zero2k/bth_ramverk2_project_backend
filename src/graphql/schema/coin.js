@@ -34,5 +34,6 @@ export default `
   type Query {
     coinByName(name: String!): Response
     topTenCoins(limit: Int!): ResponseArray
+    searchCoins(name: String!): ResponseArray
   }
 `;

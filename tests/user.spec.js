@@ -1,10 +1,10 @@
 import axios from 'axios';
-import constants from '../src/config/constants';
 import jwt from 'jsonwebtoken';
 import faker from 'faker';
+import constants from '../src/config/constants';
 
-let username = faker.internet.userName();
-let email = faker.internet.email();
+const username = faker.internet.userName();
+const email = faker.internet.email();
 
 describe('Test user resolvers with GraphQL', () => {
   test('After user register a JSON Web Token should be returned', async () => {

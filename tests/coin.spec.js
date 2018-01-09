@@ -57,12 +57,12 @@ describe('Test coin resolvers with GraphQL', () => {
               "name": "Bitcoin"
             },
             {
-              "id": "ripple",
-              "name": "Ripple"
-            },
-            {
               "id": "ethereum",
               "name": "Ethereum"
+            },
+            {
+              "id": "ripple",
+              "name": "Ripple"
             }
           ]
         }

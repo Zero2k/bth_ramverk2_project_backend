@@ -15,6 +15,6 @@ try {
   });
 }
 
-mongoose.connection.once('open', () => console.log('MongoDB Running')).on('error', (e) => {
+mongoose.connection.once('open', () => console.log('Connected to MongoDB')).on('error', (e) => {
   throw e;
 });
