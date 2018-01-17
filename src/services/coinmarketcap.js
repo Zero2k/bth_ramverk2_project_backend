@@ -3,6 +3,7 @@ import axios from 'axios';
 const URL = 'https://api.coinmarketcap.com/v1/ticker';
 
 /**
+ * Retrun single cryptocurrency from coinmarketcap.com
  *
  * @param {string} name Name of cryptocurrency
  */
