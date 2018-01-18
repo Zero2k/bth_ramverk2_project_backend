@@ -20,14 +20,14 @@ describe('Test coin resolvers with GraphQL', () => {
     const { data } = response;
     expect(data).toMatchObject({
       data: {
-        "coinByName": {
-          "success": true,
-          "data": {
-            "id": "bitcoin",
-            "name": "Bitcoin"
-          }
-        }
-      }
+        coinByName: {
+          success: true,
+          data: {
+            id: 'bitcoin',
+            name: 'Bitcoin',
+          },
+        },
+      },
     });
   });
 
@@ -49,24 +49,24 @@ describe('Test coin resolvers with GraphQL', () => {
     const { data } = response;
     expect(data).toMatchObject({
       data: {
-        "topTenCoins": {
-          "success": true,
-          "data": [
+        topTenCoins: {
+          success: true,
+          data: [
             {
-              "id": "bitcoin",
-              "name": "Bitcoin"
+              id: 'bitcoin',
+              name: 'Bitcoin',
             },
             {
-              "id": "ethereum",
-              "name": "Ethereum"
+              id: 'ethereum',
+              name: 'Ethereum',
             },
             {
-              "id": "ripple",
-              "name": "Ripple"
-            }
-          ]
-        }
-      }
+              id: 'ripple',
+              name: 'Ripple',
+            },
+          ],
+        },
+      },
     });
   });
 
@@ -87,15 +87,15 @@ describe('Test coin resolvers with GraphQL', () => {
     const { data } = response;
     expect(data).toMatchObject({
       data: {
-        "coinByName": {
-          "success": true,
-          "data": {
-            "image": {
-              "image_url": "https://www.cryptocompare.com/media/19633/btc.png"
-            }
-          }
-        }
-      }
+        coinByName: {
+          success: true,
+          data: {
+            image: {
+              image_url: 'https://www.cryptocompare.com/media/19633/btc.png',
+            },
+          },
+        },
+      },
     });
   });
 });

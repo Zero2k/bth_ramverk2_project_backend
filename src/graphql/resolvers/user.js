@@ -25,7 +25,7 @@ export default {
   },
 
   Mutation: {
-    signup: async (parent, { email, password, username }) => {
+    signup: async (parent, { email, password, username }, context) => {
       try {
         const userCredentials = { email, password, username };
         const user = await User.create(userCredentials);
@@ -35,13 +35,12 @@ export default {
           token: user.createToken(),
         };
       } catch (err) {
-        /* throw err; */
         return {
           success: false,
         };
       }
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }, context) => {
       try {
         const user = await User.findOne({ email });
 
@@ -58,14 +57,13 @@ export default {
           token: user.createToken(),
         };
       } catch (err) {
-        /* throw err; */
         return {
           success: false,
         };
       }
     },
     /* REMOVE THIS IN PRODUCTION */
-    deleteUsers: async (parent, args) => {
+    deleteUsers: async (parent, args, context) => {
       try {
         const user = await User.remove();
         if (user) {

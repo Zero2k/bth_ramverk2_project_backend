@@ -1,0 +1,20 @@
+build:
+    tests:
+        override:
+            -
+                command: 'npm test'
+                coverage:
+                    file: 'coverage/clover.xml'
+                    format: 'clover'
+
+filter:
+    excluded_paths:
+        - "coverage"
+        - "dist"
+        - "node_modules"
+        - "tests"
+
+checks:
+    javascript:
+        code_rating: true
+        duplicate_code: true
