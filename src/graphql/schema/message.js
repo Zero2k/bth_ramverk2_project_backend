@@ -7,12 +7,16 @@ export default `
     likeCount: Int!
   }
 
+  type Subscription {
+    newCoinMessage(coin: String!): Message!
+  }
+
   type Query {
     getMessage(_id: ID!): Message
     getMessages(coin: String!): [Message!]!
   }
 
   type Mutation {
-    createMessage(coin: String, text: String!): Message
+    createMessage(coin: String!, text: String!): Boolean!
   }
 `;

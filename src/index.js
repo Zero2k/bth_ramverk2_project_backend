@@ -1,8 +1,11 @@
 import express from 'express';
+import { createServer } from 'http';
 import bodyParser from 'body-parser';
 import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
+import { execute, subscribe } from 'graphql';
+import { SubscriptionServer } from 'subscriptions-transport-ws';
 
 import path from 'path';
 import cors from 'cors';
@@ -28,6 +31,7 @@ app.use(
   '/graphiql',
   graphiqlExpress({
     endpointURL: constants.GRAPHQL_PATH,
+    subscriptionsEndpoint: `ws://localhost:${constants.PORT}${constants.SUBSCRIPTIONS_PATH}`,
   }),
 );
 
@@ -41,10 +45,34 @@ app.use(
   })),
 );
 
-app.listen(constants.PORT, (err) => {
+const graphQLServer = createServer(app);
+
+graphQLServer.listen(constants.PORT, (err) => {
   if (err) {
     console.error(err);
   }
+  // eslint-disable-next-line
+  new SubscriptionServer(
+    {
+      execute,
+      subscribe,
+      schema,
+      /* onConnect: async ({ token }, webSocket) => {
+        if (token) {
+          try {
+            console.log(token);
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        throw new Error('Missing auth token!');
+      }, */
+    },
+    {
+      server: graphQLServer,
+      path: constants.SUBSCRIPTIONS_PATH,
+    },
+  );
 
   console.log(`GraphQL server running on port ${constants.PORT}.`);
 });

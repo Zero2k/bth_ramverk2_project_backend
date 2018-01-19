@@ -5,6 +5,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/build-status/master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/96cdc01d55bc6e79a0a9/maintainability)](https://codeclimate.com/github/Zero2k/bth_ramverk2_project_backend/maintainability)
+[![codecov](https://codecov.io/gh/Zero2k/bth_ramverk2_project_backend/branch/master/graph/badge.svg)](https://codecov.io/gh/Zero2k/bth_ramverk2_project_backend)
 
 ## Dependencies
 
