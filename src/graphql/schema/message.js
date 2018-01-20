@@ -5,6 +5,8 @@ export default `
     postedBy: User!
     coin: String!
     likeCount: Int!
+    createdAt: Date!
+    updatedAt: Date!
   }
 
   type Subscription {

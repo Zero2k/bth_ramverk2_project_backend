@@ -1,6 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import bodyParser from 'body-parser';
+import jwt from 'jsonwebtoken';
 import { graphiqlExpress, graphqlExpress } from 'apollo-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
@@ -57,16 +58,23 @@ graphQLServer.listen(constants.PORT, (err) => {
       execute,
       subscribe,
       schema,
-      /* onConnect: async ({ token }, webSocket) => {
+      onConnect: async ({ token }, webSocket) => {
         if (token) {
+          let user = null;
           try {
-            console.log(token);
+            user = jwt.verify(token, constants.JWT_SECRET_ONE);
           } catch (error) {
-            console.log(error);
+            user = null;
           }
+
+          if (!user._id) {
+            throw new Error('Invalid auth token!');
+          }
+
+          return true;
         }
         throw new Error('Missing auth token!');
-      }, */
+      },
     },
     {
       server: graphQLServer,
