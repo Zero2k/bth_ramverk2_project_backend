@@ -62,19 +62,24 @@ export default {
         };
       }
     },
-    /* REMOVE THIS IN PRODUCTION */
-    deleteUsers: async (parent, args, context) => {
+
+    updateUser: async (parent, { _id, ...rest }, { user }) => {
       try {
-        const user = await User.remove();
-        if (user) {
-          return {
-            remove: true,
-          };
+        await requireAuth(user);
+        const currentUser = await User.findOne({ _id: user._id });
+
+        if (!currentUser) {
+          throw new Error('Not found');
         }
-      } catch (err) {
-        throw err;
+
+        Object.entries(rest).forEach(([key, value]) => {
+          currentUser[key] = value;
+        });
+
+        return currentUser.save();
+      } catch (error) {
+        throw error;
       }
     },
-    /* REMOVE THIS IN PRODUCTION */
   },
 };

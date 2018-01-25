@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
+import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
 import constants from '../config/constants';
@@ -9,8 +10,14 @@ const UserSchema = new Schema(
     username: {
       type: String,
       unique: true,
+      minlength: 4,
+      maxlength: 17,
     },
-    avatar: String,
+    avatar: {
+      type: String,
+      default: '',
+    },
+    about: String,
     password: String,
     email: {
       type: String,
@@ -39,8 +46,7 @@ UserSchema.methods = {
   createToken() {
     return jwt.sign(
       {
-        _id: this._id,
-        username: this.username,
+        user: { _id: this._id, username: this.username },
       },
       constants.JWT_SECRET_ONE,
       { expiresIn: '20m' },

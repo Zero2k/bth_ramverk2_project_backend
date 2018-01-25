@@ -6,14 +6,11 @@ export default `
     token: String
   }
 
-  type Del {
-    remove: Boolean
-  }
-
   type User {
     _id: ID!
     username: String!
     avatar: String
+    about: String
     email: String!
     createdAt: Date!
     updatedAt: Date!
@@ -28,6 +25,6 @@ export default `
     signup(email: String!, password: String!, username: String!): Auth
     login(email: String!, password: String!): Auth
 
-    deleteUsers: Del
+    updateUser(email: String, avatar: String, about: String): User
   }
 `;

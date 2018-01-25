@@ -2,7 +2,7 @@ export default `
   type Message {
     _id: ID!
     text: String!
-    postedBy: User!
+    postedBy(limit: String): User!
     coin: String!
     likeCount: Int!
     createdAt: Date!

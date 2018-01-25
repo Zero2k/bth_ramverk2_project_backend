@@ -13,6 +13,7 @@ import cors from 'cors';
 import './config/db';
 import constants from './config/constants';
 import { authenticateUser } from './services/auth';
+import { userLoader } from './services/loaders';
 
 const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './graphql/schema')));
 const resolvers = mergeResolvers(fileLoader(path.join(__dirname, './graphql/resolvers')));
@@ -42,6 +43,7 @@ app.use(
     schema,
     context: {
       user: req.user,
+      userLoader,
     },
   })),
 );
@@ -58,20 +60,17 @@ graphQLServer.listen(constants.PORT, (err) => {
       execute,
       subscribe,
       schema,
-      onConnect: async ({ token }, webSocket) => {
+      onConnect: ({ token }, webSocket) => {
         if (token) {
-          let user = null;
           try {
-            user = jwt.verify(token, constants.JWT_SECRET_ONE);
+            const { user } = jwt.verify(token, constants.JWT_SECRET_ONE);
+            if (!user) {
+              throw new Error('Invalid auth token!');
+            }
+            return user;
           } catch (error) {
-            user = null;
+            return {};
           }
-
-          if (!user._id) {
-            throw new Error('Invalid auth token!');
-          }
-
-          return true;
         }
         throw new Error('Missing auth token!');
       },

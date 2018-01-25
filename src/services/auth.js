@@ -14,7 +14,7 @@ export const authenticateUser = async (req, res, next) => {
   const token = req.headers['x-token'];
   if (token) {
     try {
-      const user = await jwt.verify(token, constants.JWT_SECRET_ONE);
+      const { user } = jwt.verify(token, constants.JWT_SECRET_ONE);
       req.user = user;
     } catch (err) {
       req.user = null;

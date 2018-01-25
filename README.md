@@ -16,7 +16,7 @@ You will need:
 
 ## Follow these steps to start the backend.
 ```bash
-- BACKEND
+- GETTING STARTED
 1. git clone https://github.com/Zero2k/bth_ramverk2_project_backend backend
 2. cd backend
 3. yarn - install dependencies
@@ -25,8 +25,15 @@ You will need:
 ## Production
 1. yarn build
 2. yarn start:production or yarn serve (start:production requires pm2)
+## Docker
+1. yarn build
+2. docker-compose up
 ```
 
-## Further documentation
+# Further documentation
 
-Coming Soon...
+## Features
+
+- [✔] Subscriptions for real-time chat
+- [✔] Query to get data about single / all cryptocurrencies from coinmarketcap.com
+- [✔] Resolver to update / change user

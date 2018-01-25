@@ -19,9 +19,16 @@ export default {
   },
 
   Message: {
-    postedBy: ({ user }, args, context) => {
+    /* postedBy: ({ user }, args, context) => {
       return User.findById(user);
+    }, */
+    postedBy: ({ user }, { limit }, { userLoader }) => {
+      if (limit === 'single') {
+        return User.findById(user);
+      }
+      return userLoader.load(user);
     },
+    /* postedBy: ({ user }, args, { userLoader }) => userLoader.load(user), */
   },
 
   Query: {
@@ -60,6 +67,7 @@ export default {
               text: message.text,
               coin: message.coin,
               likeCount: message.likeCount,
+              createdAt: message.createdAt,
               user: currentUser,
             },
           });

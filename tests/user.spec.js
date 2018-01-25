@@ -18,10 +18,10 @@ describe('Test user resolvers with GraphQL', () => {
       `,
     });
 
-    const { token } = response.data.data.signup;
+    const { token } = await response.data.data.signup;
     const tokenPayload = jwt.decode(token, { complete: true }).payload;
 
-    expect(tokenPayload).toHaveProperty('_id');
+    expect(tokenPayload.user).toHaveProperty('_id');
     expect(tokenPayload).toHaveProperty('iat');
     expect(tokenPayload).toHaveProperty('exp');
   });
@@ -37,10 +37,10 @@ describe('Test user resolvers with GraphQL', () => {
       `,
     });
 
-    const { token } = response.data.data.login;
+    const { token } = await response.data.data.login;
     const tokenPayload = jwt.decode(token, { complete: true }).payload;
 
-    expect(tokenPayload).toHaveProperty('_id');
+    expect(tokenPayload.user).toHaveProperty('_id');
     expect(tokenPayload).toHaveProperty('iat');
     expect(tokenPayload).toHaveProperty('exp');
   });
