@@ -1,5 +1,5 @@
 import axios from 'axios';
-import constants from '../src/config/constants';
+import constants from '../config/constants';
 
 describe('Test coin resolvers with GraphQL', () => {
   test('It should return data about Bitcoin', async () => {

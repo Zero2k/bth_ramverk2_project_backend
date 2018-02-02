@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import faker from 'faker';
-import constants from '../src/config/constants';
+import constants from '../config/constants';
 
 const username = faker.internet.userName();
 const email = faker.internet.email();
