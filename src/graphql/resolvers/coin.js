@@ -4,16 +4,16 @@ import { searchCoins } from '../../services/autocomplete';
 
 export default {
   Coin: {
-    image: ({ symbol }, args, context) => {
+    image: async ({ symbol }, args, context) => {
       return getCoinImage(symbol);
     },
   },
 
   Query: {
-    coinByName: (parent, { name }, context) => {
+    coinByName: async (parent, { name }, context) => {
       return getCoinByName(name);
     },
-    topTenCoins: (parent, { limit = 10 }, context) => {
+    topTenCoins: async (parent, { limit = 10 }, context) => {
       return getTopTenCoins(limit);
     },
     /* searchCoinsApi: async (parent, { limit = 0, name }, context) => {
@@ -35,7 +35,7 @@ export default {
         data: [{}],
       };
     }, */
-    searchCoins: (parent, { name }, context) => {
+    searchCoins: async (parent, { name }, context) => {
       return searchCoins(name);
     },
   },
