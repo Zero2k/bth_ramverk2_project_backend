@@ -40,10 +40,13 @@ export default {
         throw err;
       }
     },
-    getMessages: async (parent, { coin }, { user }) => {
+    getMessages: async (parent, { offset, coin }, { user }) => {
       try {
         await requireAuth(user);
-        return await Message.find({ coin });
+        return await Message.find({ coin })
+          .sort({ createdAt: 'desc' })
+          .limit(15)
+          .skip(offset);
       } catch (err) {
         throw err;
       }
@@ -56,7 +59,7 @@ export default {
         await requireAuth(user);
         const message = await Message.create({ ...args, user: user._id });
 
-        const asyncFunc = async () => {
+        const emitNewMessage = async () => {
           const currentUser = await User.findById(user._id);
 
           /* Publish with subscriptions */
@@ -73,7 +76,7 @@ export default {
           });
         };
 
-        asyncFunc();
+        emitNewMessage();
 
         return true;
       } catch (err) {

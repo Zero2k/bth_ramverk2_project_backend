@@ -2,4 +2,3 @@
 /dist
 .vscode
 .env_dev
-/coverage

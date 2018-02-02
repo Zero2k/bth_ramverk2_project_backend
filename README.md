@@ -9,10 +9,12 @@
 
 ## Dependencies
 
-You will need:
- * [node.js](https://nodejs.org/en/)
- * [docker](https://docs.docker.com/engine/installation/) (optional)
- * [docker-compose](https://docs.docker.com/compose/install/) (optional)
+ * [Node.js](https://nodejs.org/en/)
+ * [MongoDB](https://www.mongodb.com/)
+ * [Graphql](http://graphql.org/)
+ * [Apollo GraphQL](https://www.apollographql.com/)
+ * [Docker](https://docs.docker.com/engine/installation/) (optional)
+ * [Docker-compose](https://docs.docker.com/compose/install/) (optional)
 
 ## Follow these steps to start the backend.
 ```bash
@@ -32,8 +34,21 @@ You will need:
 
 # Further documentation
 
+## About
+
 ## Features
 
-- [✔] Subscriptions for real-time chat
-- [✔] Query to get data about single / all cryptocurrencies from coinmarketcap.com
-- [✔] Resolver to update / change user
+[✔] Subscriptions for real-time chat  
+[✔] Query to get data about single / all cryptocurrencies from coinmarketcap.com  
+[✔] Mutation / Resolver to update and change user  
+[✔] Paginate messages with mongoose skip / limit
+
+## Technologies - Express, MongoDB and GraphQL
+
+### Testing
+
+### CI
+
+### Database
+
+### Modules

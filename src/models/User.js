@@ -1,6 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
-import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
 import constants from '../config/constants';
@@ -17,7 +16,10 @@ const UserSchema = new Schema(
       type: String,
       default: '',
     },
-    about: String,
+    about: {
+      type: String,
+      default: '',
+    },
     password: String,
     email: {
       type: String,
