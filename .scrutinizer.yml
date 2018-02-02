@@ -1,4 +1,7 @@
 build:
+    environment:
+        mongodb: '3.2'
+        node: v9.2.0
     tests:
         override:
             -

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1516972700973" clover="3.2.0">
-  <project timestamp="1516972700973" name="All files">
-    <metrics statements="210" coveredstatements="0" conditionals="109" coveredconditionals="10" methods="47" coveredmethods="0" elements="366" coveredelements="10" complexity="0" loc="210" ncloc="210" packages="7" files="20" classes="20">
+<coverage generated="1517577038655" clover="3.2.0">
+  <project timestamp="1517577038655" name="All files">
+    <metrics statements="209" coveredstatements="0" conditionals="109" coveredconditionals="10" methods="47" coveredmethods="0" elements="365" coveredelements="10" complexity="0" loc="209" ncloc="209" packages="7" files="20" classes="20">
       <package name="src">
         <metrics statements="39" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <file name="index.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/index.js">
@@ -117,16 +117,16 @@
           <line num="44" count="0" type="stmt"/>
           <line num="45" count="0" type="stmt"/>
           <line num="46" count="0" type="stmt"/>
-          <line num="48" count="0" type="stmt"/>
-          <line num="55" count="0" type="stmt"/>
-          <line num="56" count="0" type="stmt"/>
-          <line num="57" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
           <line num="59" count="0" type="stmt"/>
           <line num="60" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
           <line num="63" count="0" type="stmt"/>
-          <line num="76" count="0" type="stmt"/>
-          <line num="78" count="0" type="stmt"/>
-          <line num="80" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="81" count="0" type="stmt"/>
+          <line num="83" count="0" type="stmt"/>
         </file>
         <file name="user.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/graphql/resolvers/user.js">
           <metrics statements="33" coveredstatements="0" conditionals="14" coveredconditionals="0" methods="8" coveredmethods="0"/>
@@ -181,7 +181,7 @@
         </file>
       </package>
       <package name="src.models">
-        <metrics statements="19" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="18" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <file name="Message.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/models/Message.js">
           <metrics statements="3" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
           <line num="1" count="0" type="cond" truecount="0" falsecount="4"/>
@@ -189,23 +189,22 @@
           <line num="20" count="0" type="stmt"/>
         </file>
         <file name="User.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/models/User.js">
-          <metrics statements="16" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <metrics statements="15" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
           <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
-          <line num="4" count="0" type="stmt"/>
-          <line num="6" count="0" type="cond" truecount="0" falsecount="4"/>
-          <line num="8" count="0" type="stmt"/>
-          <line num="30" count="0" type="stmt"/>
-          <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="7" count="0" type="stmt"/>
           <line num="32" count="0" type="stmt"/>
-          <line num="33" count="0" type="stmt"/>
-          <line num="36" count="0" type="stmt"/>
-          <line num="39" count="0" type="stmt"/>
+          <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
           <line num="41" count="0" type="stmt"/>
-          <line num="44" count="0" type="stmt"/>
-          <line num="47" count="0" type="stmt"/>
-          <line num="54" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
         </file>
       </package>
       <package name="src.services">
