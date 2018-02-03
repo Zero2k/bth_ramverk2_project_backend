@@ -15,7 +15,7 @@ export default `
 
   type Query {
     getMessage(_id: ID!): Message
-    getMessages(offset: Int!, coin: String!): [Message!]!
+    getMessages(offset: Int, coin: String!): [Message!]!
   }
 
   type Mutation {

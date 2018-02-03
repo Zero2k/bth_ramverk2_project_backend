@@ -40,7 +40,7 @@ export default {
         throw err;
       }
     },
-    getMessages: async (parent, { offset, coin }, { user }) => {
+    getMessages: async (parent, { offset = 0, coin }, { user }) => {
       try {
         await requireAuth(user);
         return await Message.find({ coin })

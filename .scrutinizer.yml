@@ -20,6 +20,7 @@ filter:
         - "coverage"
         - "dist"
         - "node_modules"
+        - "tests"
 
 checks:
     javascript:

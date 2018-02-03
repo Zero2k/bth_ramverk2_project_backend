@@ -5,6 +5,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/build-status/master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/96cdc01d55bc6e79a0a9/maintainability)](https://codeclimate.com/github/Zero2k/bth_ramverk2_project_backend/maintainability)
+[![Code Coverage](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Zero2k/bth_ramverk2_project_backend/?branch=master)
 [![codecov](https://codecov.io/gh/Zero2k/bth_ramverk2_project_backend/branch/master/graph/badge.svg)](https://codecov.io/gh/Zero2k/bth_ramverk2_project_backend)
 
 ## Dependencies
@@ -39,7 +40,10 @@
 ## Features
 
 [✔] Subscriptions for real-time chat  
+[✔] Authentication with registration and login  
+[✔] Chat rooms based on more than 1000 cryptocurrencies  
 [✔] Query to get data about single / all cryptocurrencies from coinmarketcap.com  
+[✔] Query to get most of the cryptocurrencies logos from cryptocompare.com  
 [✔] Mutation / Resolver to update and change user  
 [✔] Paginate messages with mongoose skip / limit
 
@@ -49,6 +53,10 @@
 
 ### CI
 
+### Real-Time
+
 ### Database
 
 ### Modules
+
+## Docker
