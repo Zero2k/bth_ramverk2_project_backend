@@ -1,93 +1,75 @@
 import axios from 'axios';
-// import jwt from 'jsonwebtoken';
+import { GraphQLClient } from 'graphql-request';
 import faker from 'faker';
 import constants from '../config/constants';
 
-// const username = faker.internet.userName();
-// const email = faker.internet.email();
+const username = faker.internet.userName();
+const email = faker.internet.email();
 const message = faker.lorem.sentences();
-// let TOKEN;
-// let RESULT;
+let TOKEN;
 
 describe('Test message resolvers with GraphQL', () => {
   test('Test send message without being authenticated', async () => {
     const postMessage = await axios.post(`http://localhost:${constants.PORT}/graphql`, {
       query: `
-          mutation {
-            createMessage(coin: "bitcoin", text: "${message}")
-          }
-        `,
+        mutation {
+          createMessage(coin: "bitcoin", text: "${message}")
+        }
+      `,
     });
     const { createMessage } = postMessage.data.data;
 
     expect(createMessage).toBe(false);
   });
 
-  /* test('After user register send a message', async () => {
+  test('Register user to get token', async () => {
     const register = await axios.post(`http://localhost:${constants.PORT}/graphql`, {
       query: `
-      mutation {
-        signup(email: "${email}", password: "password", username: "${username}") {
-          token
+        mutation {
+          signup(email: "${email}", password: "password", username: "${username}") {
+            token
+          }
         }
-      }
       `,
     });
 
     const { token } = await register.data.data.signup;
     TOKEN = token;
+  });
 
-    try {
-      const postMessage = await axios.post(
-        `http://localhost:${constants.PORT}/graphql`,
-        {
-          query: `
-            mutation {
-              createMessage(coin: "bitcoin", text: "${message}")
-            }
-          `,
-        },
-        {
-          headers: { 'x-token': TOKEN },
-        },
-      );
-      const { createMessage } = postMessage.data.data;
-      RESULT = createMessage;
-    } finally {
-      console.log(RESULT);
-    }
-  }); */
+  test('Send message after user registration', async () => {
+    const client = new GraphQLClient(`http://localhost:${constants.PORT}/graphql`, {
+      headers: {
+        'x-token': TOKEN,
+      },
+    });
 
-  /* test('After login return messages for bitcoin', async () => {
-    try {
-      const getMessage = await axios.post(
-        `http://localhost:${constants.PORT}/graphql`,
-        {
-          query: `
-          {
-            getMessages(coin: "bitcoin") {
-              postedBy {
-                username
-              }
-            }
-          }
-          `,
-        },
-        {
-          headers: { 'x-token': TOKEN },
-        },
-      );
+    const query = `
+      mutation {
+        createMessage(coin: "bitcoin", text: "${message}")
+      }
+    `;
 
-      const { data } = await getMessage;
-      expect(data).toMatchObject({
-        data: {
-          getMessages: {
-            postedBy: {
-              username,
-            },
-          },
-        },
-      });
-    } catch (err) {}
-  }); */
+    const { createMessage } = await client.request(query);
+    expect(createMessage).toBe(true);
+  });
+
+  test('After login return at least one message from the bitcoin channel', async () => {
+    const client = new GraphQLClient(`http://localhost:${constants.PORT}/graphql`, {
+      headers: {
+        'x-token': TOKEN,
+      },
+    });
+
+    const query = `
+      {
+        getMessages(coin: "bitcoin") {
+          text
+        }
+      }
+    `;
+
+    const { getMessages } = await client.request(query);
+    expect(getMessages.length).toBeGreaterThanOrEqual(1);
+  });
 });

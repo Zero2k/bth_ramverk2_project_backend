@@ -31,13 +31,13 @@ export const authenticateUser = async (req, res, next) => {
  */
 export const requireAuth = async (user) => {
   if (!user || !user._id) {
-    throw new Error('Unauthorized!');
+    throw new Error('Unauthorized, no user!');
   }
 
   const me = await User.findById(user._id);
 
   if (!me) {
-    throw new Error('Unauthorized!');
+    throw new Error('Unauthorized, no user found!');
   }
 
   return me;
