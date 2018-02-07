@@ -1,4 +1,5 @@
 import { getCoinByName, getTopTenCoins } from 'async-coinmarketcap-api';
+/* import { getCoinByName, getTopTenCoins } from '../../services/coinmarketcap'; */
 import { getCoinImage } from '../../services/cryptocompare';
 import { searchCoins } from '../../services/autocomplete';
 

@@ -247,10 +247,11 @@ astral-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
 
 async-coinmarketcap-api@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/async-coinmarketcap-api/-/async-coinmarketcap-api-1.0.1.tgz#535afec53b2c0c489628fe69947287569f8e8a40"
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/async-coinmarketcap-api/-/async-coinmarketcap-api-1.0.2.tgz#0faf0d147bc3596eea1f24b212722784a29f760c"
   dependencies:
     axios "^0.17.1"
+    babel-runtime "^6.26.0"
 
 async-each@^1.0.0:
   version "1.0.1"

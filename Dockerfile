@@ -3,10 +3,10 @@ FROM node:alpine
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY package-lock.json .
+COPY yarn.lock .
 COPY package.json .
 
-RUN npm install
+RUN yarn
 
 COPY dist .
 

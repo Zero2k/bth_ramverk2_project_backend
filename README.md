@@ -37,6 +37,10 @@
 
 ## About
 
+This repo is part of a school project at Blekinge Institute of Technology and it contains the backend / server for my examination assignment in the course Ramverk2. In short, the task is to create a service / application where we use techniques that we have tested in the course, such as NoSQL databases (MongoDB), WebSocket for Real-Time functionality (I personally chose to use Subscriptions with GraphQL) and optional front-end framework. Learn more about my front-end built with React.js [here](https://github.com/Zero2k/bth_ramverk2_project_frontend). 
+
+The application I decided to build is a chat application where you can discuss more than 1000 cryptocurrencies in Real-Time.
+
 ## Features
 
 [✔] Subscriptions for real-time chat  
@@ -60,3 +64,5 @@
 ### Modules
 
 ## Docker
+
+My Docker Image for - [coinChat](https://cloud.docker.com/swarm/zero2k/repository/docker/zero2k/coinchat/general)

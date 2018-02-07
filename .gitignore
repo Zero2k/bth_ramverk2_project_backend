@@ -2,3 +2,4 @@
 /dist
 .vscode
 .env_dev
+package-lock.json
