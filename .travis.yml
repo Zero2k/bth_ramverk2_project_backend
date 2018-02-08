@@ -18,4 +18,5 @@ before_script:
 
 script:
   - yarn start &
+  - sleep 20
   - yarn test
