@@ -36,7 +36,7 @@
 
 ## About
 
-This repo is part of a school project at Blekinge Institute of Technology and it contains the backend / server for my examination assignment in the course Ramverk2. In short, the task is to create a service / application where we use techniques that we have tested in the course, such as NoSQL databases (MongoDB), WebSocket for Real-Time functionality (I personally chose to use Subscriptions with GraphQL) and optional front-end framework. Learn more about my front-end built with React.js [here](https://github.com/Zero2k/bth_ramverk2_project_frontend). 
+This repo is part of a school project at Blekinge Institute of Technology and it contains the backend / server for my examination assignment in the course Ramverk2. In short, the task is to create a service / application where we use techniques that we have tested / learned in the course, such as NoSQL databases (MongoDB), WebSocket for Real-Time functionality (I personally chose to use Subscriptions with GraphQL) and optional front-end framework. Learn more about my front-end built with React.js [here](https://github.com/Zero2k/bth_ramverk2_project_frontend). 
 
 The application I decided to build is a chat application where you can discuss more than 1000 cryptocurrencies in Real-Time.
 
@@ -138,14 +138,132 @@ Once you have a valid token in your headers, you should be able to execute all t
 
 ### Testing
 
+To run the tests, you can either use Docker or run the tests locally. However if you decide to run the tests locally you will need to have MongoDB up and running, with the Docker Image a MongoDB is automatically started.
+
+#### Locally
+
+```bash
+1. yarn start
+2. yarn test
+```
+
+#### Docker
+**This require you to have Docker and docker-compose installed.*
+```bash
+1. yarn start:docker
+2. yarn test
+3. yarn stop:docker
+```
+
+*The tests is written to test / cover the GraphQL resolvers and make sure that the Queries and Mutations is working as intended.*
+
+#### ESLint
+
+I have used ESLint to format my code based on Airbnb's base JS .eslintrc and Prettier which have formatted the code as soon as it was saved. ESLint has worked great with this project and I seem to have gotten it to work well with the new ES6 syntax. Also, it made sure that my code follow Airbnb's Code Standards / Style Guide.
+
 ### CI
+
+The following services are used for Continuous Integration:
+
+[✔] Travis CI  
+[✔] Code Climate  
+[✔] Better Code Hub  
+[✔] Scrutinizer CI  
+
+I use Travis CI and Scrutinizer CI to make sure that my build is working and passing its tests. The other services is used to generate reports of my code quality. Throughout the project, I have managed to keep the code quality at a high level, however as i added coverage via Scrutinizer then my score went down a bit, but it seems to be because of some code in the coverage folder.
 
 ### Real-Time
 
+
+The app utilize subscriptions from Graphql to send messages in real time. Subscptions uses a PubSub implementation and in order to publish the data it uses a WebSocket server and client library to work with GraphQL. So basically you publish to a topic and anyone who subscribe to this topic will recive updates as the data is being published.
+
+To learn more about my implementation of Subscriptions, check out index.js and the SubscriptionServer, basically what it does is it add a WebSocket server with a path /subscriptions where you will connect the client and then it check if all incoming request has an valid JWT token. 
+
+The second part is the Subscription type in my message schema, it describe how the data that is being transmitted should look like and what it should return, in my case it's just message.
+
+The last part is located in the message resolver and consist of two code block. The first part is the Subscription where it filter the messages that's being transmitted with WebSocket and it filter it based on the payload.coin which is the coin field in the message and this allows me to listen for messages that belongs to for example 'bitcoin' on the client. 
+
+The second part is located in the createMessage Mutation and it's where i "emit / publish" the message once it's created.
+
 ### Database
 
+The database i use for this project is MongoDB, which is an open-source cross-platform document-oriented database and probably one of the most popular NoSQL databases.
+
+The database store two things, Users and their Messages. These are based of two database models found in src/models and here is how they are structured:
+
+#### User
+```bash
+{
+  username: {
+    type: String,
+    unique: true,
+    minlength: 4,
+    maxlength: 17,
+  },
+  avatar: {
+    type: String,
+    default: '',
+  },
+  about: {
+    type: String,
+    default: '',
+  },
+  password: String,
+  email: {
+    type: String,
+    unique: true,
+  },
+}
+```
+
+#### Message
+```bash
+{
+  text: {
+    type: String,
+    minlength: [1, 'Text needs to be longer'],
+    maxlength: [500, 'Text cannot exceed 500 characters'],
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  coin: String,
+  likeCount: {
+    type: Number,
+    default: 0,
+  },
+}
+```
+
+I'm able to create these database models thanks to [Mongoose](http://mongoosejs.com/) which i also use to create the connection to the database and execute operations against the database.
+
 ### Modules
+
+I have developed my own module and used it in this project:
+
+[async-coinmarketcap-api ](https://www.npmjs.com/package/async-coinmarketcap-api)
+
+The module is based of the code found in src/services/coinmarketcap.js and it allows me to make API calls to coinmarketcap.com and get data about all cryptocurrencies available on the site.
 
 ## Docker
 
 My Docker Image for - [coinChat](https://cloud.docker.com/swarm/zero2k/repository/docker/zero2k/coinchat/general)
+
+## Environment Variables
+
+To set custom environment variables use .env_dev and .env_pro in src/config or change the values directly in src/config/constants.js.
+
+*The app is not dependent on environment variables in order to work as it use some default values, but in production i would highly recommend that you use environment variables to set the JWT Secret*
+
+process.env.PORT | PORT: 8080  
+process.env.DB_UR | DB_URL: mongodb://localhost:27017  
+process.env.JWT_SECRET_ONE | JWT_SECRET_ONE:  LFoljOEDdS4KDCwjMbiOyqWlgU6vqf1t2a2XJWLdiJeF3MkfnCd86ivXLIutUZwC *(change this in production)*
+
+Access these values by importing the constants file:
+
+```bash
+import constants from './src/config/constants';
+
+constants.PORT or constants.DB_URL
+```

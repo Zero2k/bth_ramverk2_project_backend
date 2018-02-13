@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>0/8</span>
       </div>
     </div>
   </div>
@@ -85,23 +85,35 @@
 40
 41
 42
-43</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -128,24 +140,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { getC<span class="cstat-no" title="statement not covered" >oinByName, getTopTenCoins } from 'async-coinmarketcap-api';<span class="cstat-no" title="statement not covered" ></span></span>
+/* import { getCoinByName, getTopTenCoins } from '../../services/coinmarketcap'; */
 import { getCoinImage<span class="cstat-no" title="statement not covered" > } from '../../services/cryptocompare';</span>
-import { searchCoins<span class="cstat-no" title="statement not covered" > } from '../../services/autocomplete';<span class="cstat-no" title="statement not covered" ></span></span>
+import { searchCoins<span class="cstat-no" title="statement not covered" > } from '../../services/autocomplete';</span>
+/* import { requireAuth } from '../../services/auth'; */<span class="cstat-no" title="statement not covered" ></span>
 &nbsp;
 export default {
   Coin: {
-    image: <span class="fstat-no" title="function not covered" >as</span>ync ({ symbol }, args, context) =&gt; {
+    image: <span class="fstat-no" title="function not covered" >as</span>ync ({ symbol }, args, { user }) =&gt; {
+      /* await requireAuth(user); */
 <span class="cstat-no" title="statement not covered" >      return getCoinImage(symbol);</span>
     },
   },
 &nbsp;
   Query: {
-    coinByName: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { name }, context) =&gt; {
+    coinByName: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { name }, { user }) =&gt; {
+      /* await requireAuth(user); */
 <span class="cstat-no" title="statement not covered" >      return getCoinByName(name);</span>
     },
-    topTenCoins: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { limit = <span class="branch-0 cbranch-no" title="branch not covered" >10 </span>}, context) =&gt; {
+    topTenCoins: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { limit = <span class="branch-0 cbranch-no" title="branch not covered" >10 </span>}, { user }) =&gt; {
+      /* await requireAuth(user); */
 <span class="cstat-no" title="statement not covered" >      return getTopTenCoins(limit);</span>
     },
-    /* searchCoinsApi: async (parent, { limit = 0, name }, context) =&gt; {
+    /* searchCoinsApi: async (parent, { limit = 0, name }, { user }) =&gt; {
       let dataArray = [];
 &nbsp;
       const { data } = await getTopTenCoins(limit);
@@ -164,7 +181,8 @@ export default {
         data: [{}],
       };
     }, */
-    searchCoins: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { name }, context) =&gt; {
+    searchCoins: <span class="fstat-no" title="function not covered" >as</span>ync (parent, { name }, { user }) =&gt; {
+      /* await requireAuth(user); */
 <span class="cstat-no" title="statement not covered" >      return searchCoins(name);</span>
     },
   },
@@ -175,7 +193,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 06 2018 13:35:08 GMT+0100 (CET)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 13 2018 14:36:35 GMT+0100 (CET)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

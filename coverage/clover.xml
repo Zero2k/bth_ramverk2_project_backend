@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1517920508215" clover="3.2.0">
-  <project timestamp="1517920508215" name="All files">
-    <metrics statements="209" coveredstatements="0" conditionals="110" coveredconditionals="10" methods="47" coveredmethods="0" elements="366" coveredelements="10" complexity="0" loc="209" ncloc="209" packages="7" files="20" classes="20">
+<coverage generated="1518528995495" clover="3.2.0">
+  <project timestamp="1518528995495" name="All files">
+    <metrics statements="210" coveredstatements="0" conditionals="110" coveredconditionals="10" methods="47" coveredmethods="0" elements="367" coveredelements="10" complexity="0" loc="210" ncloc="210" packages="7" files="20" classes="20">
       <package name="src">
         <metrics statements="39" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <file name="index.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/index.js">
@@ -82,16 +82,17 @@
         </file>
       </package>
       <package name="src.graphql.resolvers">
-        <metrics statements="69" coveredstatements="0" conditionals="30" coveredconditionals="0" methods="22" coveredmethods="0"/>
+        <metrics statements="70" coveredstatements="0" conditionals="30" coveredconditionals="0" methods="22" coveredmethods="0"/>
         <file name="coin.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/graphql/resolvers/coin.js">
-          <metrics statements="7" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
+          <metrics statements="8" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
           <line num="1" count="0" type="stmt"/>
-          <line num="2" count="0" type="stmt"/>
           <line num="3" count="0" type="stmt"/>
-          <line num="8" count="0" type="stmt"/>
-          <line num="14" count="0" type="stmt"/>
-          <line num="17" count="0" type="stmt"/>
-          <line num="39" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="45" count="0" type="stmt"/>
         </file>
         <file name="date.js" path="/home/vibe/dbwebb-kurser/ramverk2/me/app/backend/src/graphql/resolvers/date.js">
           <metrics statements="1" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>

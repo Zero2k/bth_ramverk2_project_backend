@@ -52,7 +52,7 @@ const graphQLServer = createServer(app);
 
 graphQLServer.listen(constants.PORT, (err) => {
   if (err) {
-    console.error(err);
+    throw new Error('Something is wrong with the server: ', err);
   }
   // eslint-disable-next-line
   new SubscriptionServer(
