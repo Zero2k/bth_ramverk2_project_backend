@@ -40,6 +40,9 @@ This repo is part of a school project at Blekinge Institute of Technology and it
 
 The application I decided to build is a chat application where you can discuss more than 1000 cryptocurrencies in Real-Time.
 
+Demo: [198.211.127.185](198.211.127.185)  
+Graphiql: [198.211.127.185:8080/graphiql](198.211.127.185:8080/graphiql)
+
 ## Features
 
 [✔] Subscriptions for real-time chat  

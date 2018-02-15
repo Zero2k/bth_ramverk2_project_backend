@@ -71,8 +71,9 @@ graphQLServer.listen(constants.PORT, (err) => {
           } catch (error) {
             return {};
           }
+        } else {
+          throw new Error('Missing auth token!');
         }
-        throw new Error('Missing auth token!');
       },
     },
     {
