@@ -28,8 +28,7 @@
 1. yarn build
 2. yarn start:production or yarn serve (start:production requires pm2)
 ## Docker
-1. yarn build
-2. docker-compose up
+1. yarn start:docker
 ```
 
 # Further documentation
@@ -40,8 +39,8 @@ This repo is part of a school project at Blekinge Institute of Technology and it
 
 The application I decided to build is a chat application where you can discuss more than 1000 cryptocurrencies in Real-Time.
 
-Demo: [198.211.127.185](198.211.127.185)  
-Graphiql: [198.211.127.185:8080/graphiql](198.211.127.185:8080/graphiql)
+Demo: [http://198.211.127.185/](http://198.211.127.185/)  
+Graphiql: [http://198.211.127.185//graphiql](http://198.211.127.185//graphiql)
 
 ## Features
 
@@ -158,7 +157,21 @@ To run the tests, you can either use Docker or run the tests locally. However if
 3. yarn stop:docker
 ```
 
+If you want run the test with different node versions, then use the following command to test the application with node 9, 8 and 7:
+
+```bash
+1. yarn start:nodes
+2. yarn test-docker | test-docker1 | test-docker2
+3. yarn stop:docker
+```
+
 *The tests is written to test / cover the GraphQL resolvers and make sure that the Queries and Mutations is working as intended.*
+
+##### Coverage
+
+Once the test is complete, it also generate some files for code coverage which is located in the folder coverage. Open index.html in coverage/Icov-report to see the report.
+
+According to Scrutinizer CI i have 16% coverage, but it's strange because my code coverage has been on the same level ever since I wrote my first test... Also, if you look at my tests you'll see that i have written tests that correspond to all the files / methods in resolvers.
 
 #### ESLint
 
@@ -174,6 +187,10 @@ The following services are used for Continuous Integration:
 [✔] Scrutinizer CI  
 
 I use Travis CI and Scrutinizer CI to make sure that my build is working and passing its tests. The other services is used to generate reports of my code quality. Throughout the project, I have managed to keep the code quality at a high level, however as i added coverage via Scrutinizer then my score went down a bit, but it seems to be because of some code in the coverage folder.
+
+About the benefits of using tools like these. So i have looked quite a bit at the report from bettercodehub.com and what it often complains about is 'Write Short Units of Code' and i have rewrite the code in some places to achieve this, but there are places I don't want to do this because I find it harder to read the code / understand what the code does. 
+
+In conclusion, i see the benefits of using tools like bettercodehub.com and i believe it's a good development tool but i don't think you should do exactly what it says all the time, especially not if it make the code harder to understand. As for Travis CI, it's a good tool to make sure the code works and it's defenitively something I will continue to use.
 
 ### Real-Time
 
